@@ -1,0 +1,39 @@
+<h1>README</h1>
+<h2>Button component</h2>
+<p>Attributes include</p>
+<ul>
+<li>label</li>
+<li>href</li>
+<li>newTab</li>
+<li>type
+<ul>
+<li>default</li>
+<li>color</li>
+<li>outline</li>
+<li>plain</li>
+</ul>
+</li>
+<li>icon (should be an svg file inside the <code>_includes</code> folder)</li>
+<li>animatingIcon</li>
+</ul>
+<h3>Alpine JS attributes</h3>
+<p>Add Alpine JS interactivity within the <code>attrs</code> object. Nested double quotes are okay.</p>
+<pre><code>    button(
+        type=&quot;outline&quot;,
+        icon=&quot;assets/clipboard.svg&quot;,
+        animatingIcon=&quot;assets/check.svg&quot;,
+        attrs={
+            &quot;x-data&quot;: {
+                isAnimating: false,
+                setAnimating() {
+                    this.isAnimating=true;
+                    setTimeout(() =&gt; {
+                        this.isAnimating=false;
+                    }, 1500);
+                }
+            },
+            &quot;@click&quot;: &quot;setAnimating()&quot;
+        }
+    )
+
+</code></pre>

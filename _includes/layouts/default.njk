@@ -1,0 +1,36 @@
+{% set pageTitle %}
+{%- if metatdata.seoTitle -%}
+    {{ metadata.seoTitle }} –{% elseif title %}{{ title }} –
+{% endif %}
+{{- global.siteTitle -}}
+{% endset %}
+
+{% set pageDescription %}
+{%- if metadata.seoDescription -%}{{- metadata.seoDescription -}}
+{% else %}{{- global.siteDescription -}}
+{%- endif -%}
+{% endset %}
+
+<!DOCTYPE html>
+<html class="scroll-smooth scroll-py-global-gap" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ pageTitle }}</title>
+        <meta property="og:title" content="{{ pageTitle }}"/>
+        <meta name="description" content="{{ pageDescription }}">
+        <meta property="og:description" content="{{ pageDescription }}"/>
+        <meta property="og:url" content="{{ global.siteDomain }}{{ page.url }}"/>
+        <meta property="og:image" content="{{ global.siteDomain }}{% if metadata.seoImage %}{{ metadata.seoImage }}{% else %}{{ global.siteImage }}{% endif %}"/>
+        <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}"/>
+        <meta name="generator" content="{{ eleventy.generator }}">
+        <link rel="stylesheet" href="/index.css">
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body class="text-base bg-gray-100 text-green-900 antialiased">
+        {% include "components/navbar.njk" %}
+        <div class="flex flex-col gap-global-gap px-global-gap pb-global-gap">
+            {{ content | safe }}
+        </div>
+    </body>
+</html>

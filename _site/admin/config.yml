@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: "images/uploads"
+collections:
+  - name: "global"
+    label: "Global"
+    files:
+      - name: "global"
+        label: "Global data"
+        file: "_data/global.json"
+        fields:
+          - { label: "Site title", name: "siteTitle", widget: "string" }
+          - { label: "Website domain", name: "permalink", widget: "string", hint: "The URL that this website lives on" }
+          - { label: "Twitter link", name: "twitterLink", widget: "string", required: false }
+          - { label: "Facebook link", name: "facebookLink", widget: "string", required: false }
+          - { label: "Instagram link", name: "instagramLink", widget: "string", required: false }
+          - { label: "Social snippet", name: "socialSnippet", widget: "string", required: false, hint: "The short snippet of text that appears in the website share card on social
+                media. Should be around 200 characters max." }
+          - { label: "Social sharing graphic", name: "socialGraphic", widget: "image", required: false, hint: "The graphic that appears in the website share card on social media. Should
+                be 2400px × 1260px" }
+  - name: "blog"
+    label: "Blog"
+    folder: "blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }

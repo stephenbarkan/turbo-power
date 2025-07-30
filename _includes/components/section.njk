@@ -1,0 +1,33 @@
+{% macro pod(podColor = "", podSize = "base", class = "", id = "") %}
+    <div
+        id="{{id}}"
+        data-id="pod"
+        style="--spacing-pod-block: var(--pod-block-{{podSize}})"
+        class="grid overflow-hidden relative lg:grid-cols-2 scroll-my-global-gap  gap-pod-gap rounded-lg {{ podColor }} {{ class }}">
+        {{ caller() | safe }}
+    </div>
+{% endmacro %}
+
+{% macro fullColumn(class) %}
+    <div
+        data-id="fullColumn"
+        class="col-span-full flex flex-col gap-content-gap px-pod-inline py-pod-block max-w-2xl lg:max-w-none mx-auto {{ class }}">
+        {{ caller() | safe }}
+    </div>
+{% endmacro %}
+
+{% macro leftColumn() %}
+    <div
+        data-id="leftColumn"
+        class="pt-pod-block lg:py-pod-block px-pod-inline flex flex-col gap-content-gap justify-center max-w-2xl lg:max-w-none mx-auto">
+        {{ caller() | safe }}
+    </div>
+{% endmacro %}
+
+{% macro rightColumn() %}
+    <div
+        data-id="rightColumn"
+        class="pb-pod-block lg:py-pod-block px-pod-inline flex flex-col gap-content-gap justify-center max-w-2xl lg:max-w-none mx-auto">
+        {{ caller() | safe }}
+    </div>
+{% endmacro %}

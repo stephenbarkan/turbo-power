@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+{% from "components/button.njk" import button %}
+{% from "components/section.njk" import pod,
+leftColumn,
+rightColumn,
+fullColumn %}
+
+{% call pod(podColor="bg-green-900 text-yellow-100", podSize="lg", id="hero") %}
+{% call fullColumn() %}
+<p class="text-green-400">Turbo Power Semiconductors</p>
+<h1 class="text-2xl">Efficient power chips for the energy transition</h1>
+{% endcall %}
+{% endcall %}
+
+{% call pod(podColor = "", podSize = "base", id = "about") %}
+{% call leftColumn() %}
+<p class="text-lg">
+    <b class="text-green-600 font-medium">Turbo Power Semiconductors</b> helps electric vehicle manufacturers get more performance out of their batteries at about one-third the cost of the current solution. Our Silicon-based solution has the performance of Silicon Carbide at a much lower cost.</p>
+<p class="text-lg">With its innovative, patent-pending <b class="text-green-600 font-medium">TurboIGBT technology</b>, Turbo Power Semiconductors is strategically focused on advancing IGBT technology to meet the growing demands of this dynamic sector.</p>
+{% endcall %}
+{% call pod(podColor="bg-green-400", podSize="sm", class="items-end") %}
+{% call fullColumn() %}
+<div class="text-green-600 w-min scale-[6] top-20 absolute -rotate-90 hidden lg:block">{% include "assets/logo.svg" %}</div>
+
+<p class="text-xl align">With our TurboIGBT, Tesla could save about $1,300 per car.</p>
+{% endcall %}
+{% endcall %}
+{% endcall %}
+
+{% call pod(podColor="bg-green-200", id="founder") %}
+{% call leftColumn() %}
+<img class="rounded-base" src="/images/uploads/alex.png" alt="">
+{% endcall %}
+{% call rightColumn() %}
+<h2 class="text-base opacity-70">Founder and President</h2>
+<h3 class="text-xl">Alex Huang</h3>
+<p class="text-base">Has been working on power semiconductors and power electronics for more than 40 years. Most in academic R&D settings. Inventors of many power chip concepts. First IGBT in China etc.</p>
+{% endcall %}
+{% endcall %}
+
+{% call pod(podColor="bg-green-900 text-yellow-100", id="contact") %}
+{% call fullColumn(class="items-center text-center overflow-hidden") %}
+<p class="opacity-80">For more info send us a message at</p>
+<p class="text-xl break-all">contact@turbopowersemi.com</p>
+{{ button(label="Contact us", type="color", href="mailto:contact@turbopowersemi.com") }}
+{% endcall %}
+{% endcall %}
+
+{% call pod(podColor = "", podSize = "none") %}
+{% call fullColumn() %}
+<small class="text-center text-xs opacity-70">Copyright Turbo Power Semiconductors Inc. 2025</small>
+{% endcall %}
+{% endcall %}
