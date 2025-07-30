@@ -279,23 +279,8 @@
   .-rotate-90 {
     rotate: calc(90deg * -1);
   }
-  .scroll-m-global-gap {
-    scroll-margin: var(--spacing-global-gap);
-  }
-  .scroll-my-6 {
-    scroll-margin-block: calc(var(--spacing) * 6);
-  }
   .scroll-my-global-gap {
     scroll-margin-block: var(--spacing-global-gap);
-  }
-  .scroll-mb-global-gap {
-    scroll-margin-bottom: var(--spacing-global-gap);
-  }
-  .scroll-p-global-gap {
-    scroll-padding: var(--spacing-global-gap);
-  }
-  .scroll-py-6 {
-    scroll-padding-block: calc(var(--spacing) * 6);
   }
   .scroll-py-global-gap {
     scroll-padding-block: var(--spacing-global-gap);
@@ -335,9 +320,6 @@
   }
   .overflow-hidden {
     overflow: hidden;
-  }
-  .scroll-auto {
-    scroll-behavior: auto;
   }
   .scroll-smooth {
     scroll-behavior: smooth;

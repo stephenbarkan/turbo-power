@@ -2,5 +2,6 @@
   "siteDomain": "https://soft-chebakia-93416c.netlify.app/",
   "siteTitle": "Turbo Power Semiconductors",
   "siteDescription": "Efficient power chips for the energy transition",
-  "siteImage": "/images/uploads/og-image.png"
+  "siteImage": "/images/uploads/og-image.png",
+  "favicon": "/images/uploads/favicon.png"
 }
