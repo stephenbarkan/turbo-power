@@ -47,6 +47,9 @@ content:
           - name: description
             label: Description
             type: text
+          - name: image
+            label: Photo
+            type: image
 components:
   metadata:
     label: SEO metadata
