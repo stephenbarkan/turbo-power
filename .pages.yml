@@ -46,7 +46,7 @@ content:
             type: string
           - name: description
             label: Description
-            type: string
+            type: text
 components:
   metadata:
     label: SEO metadata
