@@ -20,7 +20,6 @@ founderSection:
     chip concepts. First IGBT in China etc.
   image: /images/uploads/alex.png
 contactSection:
-  contactEmail: contact@turbopowersemi.com
   email: contact@turbopowersemi.com
 ---
 {% from "components/button.njk" import button %}
@@ -66,8 +65,10 @@ fullColumn %}
 {% call pod(podColor="bg-green-900 text-yellow-100", id="contact") %}
 {% call fullColumn(class="items-center text-center overflow-hidden") %}
 <p class="opacity-80">For more info send us a message at</p>
-<p class="text-xl break-all">contact@turbopowersemi.com</p>
-{{ button(label="Contact us", type="color", href="mailto:contact@turbopowersemi.com") }}
+<p class="text-xl break-all">{{ contactSection.email }}</p>
+
+{% set contactHref = "mailto:" + contactSection.email %}
+{{ button(label="Contact us", type="color", href=contactHref) }}
 {% endcall %}
 {% endcall %}
 
