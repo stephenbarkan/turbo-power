@@ -50,6 +50,16 @@ content:
           - name: image
             label: Photo
             type: image
+      - name: contactSection
+        label: Contact section
+        type: object
+        fields:
+          - name: contactEmail
+            label: Contact email address
+            type: string
+            pattern:
+              message: 'This must be a valid email address (e.g. hello@example.com).'
+              regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 components:
   metadata:
     label: SEO metadata
