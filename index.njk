@@ -18,7 +18,7 @@ founderSection:
   description: Has been working on power semiconductors and power electronics for
     more than 40 years. Most in academic R&D settings. Inventors of many power
     chip concepts. First IGBT in China etc.
-  image: /images/uploads/favicon.png
+  image: /images/uploads/alex.png
 ---
 {% from "components/button.njk" import button %}
 {% from "components/section.njk" import pod,
@@ -28,8 +28,8 @@ fullColumn %}
 
 {% call pod(podColor="bg-green-900 text-yellow-100", podSize="lg", id="hero") %}
 {% call fullColumn() %}
-<p class="text-green-400">Turbo Power Semiconductors</p>
-<h1 class="text-2xl">Efficient power chips for the energy transition</h1>
+<p class="text-green-400">{{ global.siteTitle }}</p>
+<h1 class="text-2xl">{{ global.siteDescription }}</h1>
 {% endcall %}
 {% endcall %}
 
@@ -51,7 +51,7 @@ fullColumn %}
 
 {% call pod(podColor="bg-green-200", id="founder") %}
 {% call leftColumn() %}
-<img class="rounded-base" src="/images/uploads/alex.png" alt="">
+<img class="rounded-base" src="{{ founderSection.image }}" alt="">
 {% endcall %}
 {% call rightColumn() %}
 <h2 class="text-base opacity-70">{{ founderSection.title }}</h2>
