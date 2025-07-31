@@ -580,13 +580,11 @@
 }
 @layer components {
   .prose {
-    --prose-font-size: var(--text-xl);
-    --prose-primary-text-color: var(--color-gray-100);
-    --prose-secondary-text-color: var(--color-gray-600);
-    --prose-tertiary-text-color: var(--color-gray-500);
-    --prose-border-color: var(--color-gray-400);
-    --prose-background-color: var(--color-gray-100);
-    --prose-link-color: var(--color-blue-700);
+    --prose-font-size: var(--text-lg);
+    --prose-primary-text-color: var(--color-green-900);
+    --prose-border-color: var(--color-gray-300);
+    --prose-background-color: var(--color-gray-200);
+    --prose-link-color: var(--color-green-600);
     --space-half: calc(var(--prose-font-size) * 2 / 8);
     --space-1: calc(var(--prose-font-size) * 4 / 8);
     --space-2: calc(var(--prose-font-size) * 7 / 8);
@@ -601,7 +599,7 @@
   .prose > p {
     margin-block-start: var(--space-2);
     color: var(--prose-primary-text-color);
-    line-height: 1.6;
+    line-height: var(--text-lg--line-height);
   }
   .prose h2, .prose h3 {
     font-weight: 600;
@@ -700,8 +698,8 @@
     margin-block-start: var(--space-1) !important;
   }
   .prose b, .prose b *:not(a), .prose strong, .prose strong *:not(a) {
-    font-weight: 600;
-    color: var(--prose-primary-text-color);
+    color: var(--color-green-600);
+    font-weight: inherit;
   }
   .prose em {
     font-style: italic;

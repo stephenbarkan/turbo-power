@@ -23,7 +23,7 @@ content:
     label: Homepage
     type: file
     path: index.njk
-    fields: 
+    fields:
       - name: aboutSection
         label: About section
         type: object
@@ -33,6 +33,19 @@ content:
             type: rich-text
           - name: callout
             label: Highlighted callout
+            type: string
+      - name: founderSection
+        label: Founder section
+        type: object
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: name
+            label: Name
+            type: string
+          - name: description
+            label: Description
             type: string
 components:
   metadata:
