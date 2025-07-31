@@ -54,7 +54,7 @@ content:
         label: Contact section
         type: object
         fields:
-          - name: contactEmail
+          - name: email
             label: Contact email address
             type: string
             pattern:
