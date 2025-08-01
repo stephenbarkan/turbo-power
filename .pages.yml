@@ -30,7 +30,8 @@ content:
         fields:
           - name: content
             label: Content
-            type: rich-text
+            type: text
+            list: true
           - name: callout
             label: Highlighted callout
             type: string
