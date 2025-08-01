@@ -23,9 +23,8 @@ contactSection:
   email: contact@turbopowersemi.com
 ---
 {% from "components/button.njk" import button %}
-{% from "components/section.njk" import pod,
-leftColumn,
-rightColumn,
+{% from "components/pod.njk" import pod,
+oneColumn,
 fullColumn %}
 
 {% call pod(podColor="bg-green-900 text-yellow-100", podSize="lg", id="hero") %}
@@ -36,7 +35,7 @@ fullColumn %}
 {% endcall %}
 
 {% call pod(podColor = "", podSize = "base", id = "about") %}
-{% call leftColumn() %}
+{% call oneColumn() %}
 <div class="text-lg prose">{{aboutSection.content | markdownify | safe }}</div>
 {# <p class="text-lg">
     <b class="text-green-600 font-medium">Turbo Power Semiconductors</b> helps electric vehicle manufacturers get more performance out of their batteries at about one-third the cost of the current solution. Our Silicon-based solution has the performance of Silicon Carbide at a much lower cost.</p>
@@ -52,10 +51,10 @@ fullColumn %}
 {% endcall %}
 
 {% call pod(podColor="bg-green-200", id="founder") %}
-{% call leftColumn() %}
+{% call oneColumn() %}
 <img class="rounded-base" src="{{ founderSection.image }}" alt="">
 {% endcall %}
-{% call rightColumn() %}
+{% call oneColumn() %}
 <h2 class="text-base opacity-70">{{ founderSection.title }}</h2>
 <h3 class="text-xl">{{ founderSection.name }}</h3>
 <p class="text-base">{{ founderSection.description }}</p>

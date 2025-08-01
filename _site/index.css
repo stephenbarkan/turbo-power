@@ -489,6 +489,16 @@
     --tw-ease: var(--ease-fluid);
     transition-timing-function: var(--ease-fluid);
   }
+  .first\:pt-pod-block {
+    &:first-child {
+      padding-top: var(--spacing-pod-block);
+    }
+  }
+  .last\:pb-pod-block {
+    &:last-child {
+      padding-bottom: var(--spacing-pod-block);
+    }
+  }
   .hover\:border-current\/50 {
     &:hover {
       @media (hover: hover) {
