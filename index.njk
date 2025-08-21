@@ -21,56 +21,64 @@ contactSection:
   email: contact@turbopowersemi.com
 ---
 {% from "components/button.njk" import button %}
-{% from "components/pod.njk" import pod,
-oneColumn,
-fullColumn %}
+{% from "components/pod.njk" import pod, column %}
+{% from "components/prose.njk" import prose %}
+{% from "components/copyToClipboard.njk" import copyToClipboard %}
 
+{# banner section #}
 {% call pod(podColor="bg-green-900 text-yellow-100", podSize="lg", id="hero") %}
-{% call fullColumn() %}
-<p class="text-green-400">{{ global.siteTitle }}</p>
-<h1 class="text-2xl">{{ global.siteDescription }}</h1>
-{% endcall %}
+    {% call column() %}
+        <p class="text-green-400">{{ global.siteTitle }}</p>
+        <h1 class="text-2xl">{{ global.siteDescription }}</h1>
+    {% endcall %}
 {% endcall %}
 
+{# about section #}
 {% call pod(podColor = "", podSize = "base", id = "about") %}
-{% call oneColumn() %}
-<div class="text-lg prose">{{aboutSection.content | markdownify | safe }}</div>
-{# <p class="text-lg">
-    <b class="text-green-600 font-medium">Turbo Power Semiconductors</b> helps electric vehicle manufacturers get more performance out of their batteries at about one-third the cost of the current solution. Our Silicon-based solution has the performance of Silicon Carbide at a much lower cost.</p>
-<p class="text-lg">With its innovative, patent-pending <b class="text-green-600 font-medium">TurboIGBT technology</b>, Turbo Power Semiconductors is strategically focused on advancing IGBT technology to meet the growing demands of this dynamic sector.</p> #}
+    {% call column() %}
+        {% for item in aboutSection.content %}
+            {% call prose() %}
+                {{ item | markdownify | safe }}
+            {% endcall %}
+        {% endfor %}
+    {% endcall %}
+    {% call pod(podColor="bg-green-400", podSize="sm", class="items-end") %}
+        {% call column() %}
+            <div class="text-green-600 w-min scale-[6] top-20 absolute -rotate-90 hidden lg:block">{% include "assets/logo.svg" %}</div>
+            <p class="text-xl align">{{ aboutSection.callout }}</p>
+        {% endcall %}
+    {% endcall %}
 {% endcall %}
-{% call pod(podColor="bg-green-400", podSize="sm", class="items-end") %}
-{% call fullColumn() %}
-<div class="text-green-600 w-min scale-[6] top-20 absolute -rotate-90 hidden lg:block">{% include "assets/logo.svg" %}</div>
 
-<p class="text-xl align">{{ aboutSection.callout }}</p>
-{% endcall %}
-{% endcall %}
-{% endcall %}
-
+{# founder section #}
 {% call pod(podColor="bg-green-200", id="founder") %}
-{% call oneColumn() %}
-<img class="rounded-base" src="{{ founderSection.image }}" alt="">
-{% endcall %}
-{% call oneColumn() %}
-<h2 class="text-base opacity-70">{{ founderSection.title }}</h2>
-<h3 class="text-xl">{{ founderSection.name }}</h3>
-<p class="text-base">{{ founderSection.description }}</p>
-{% endcall %}
+    {% call column() %}
+        <img class="rounded-base" src="{{ founderSection.image }}" alt="">
+    {% endcall %}
+    {% call column() %}
+        <h2 class="text-base opacity-70">{{ founderSection.title }}</h2>
+        <h3 class="text-xl">{{ founderSection.name }}</h3>
+        <p class="text-base">{{ founderSection.description }}</p>
+    {% endcall %}
 {% endcall %}
 
+{# contact section #}
 {% call pod(podColor="bg-green-900 text-yellow-100", id="contact") %}
-{% call fullColumn(class="items-center text-center overflow-hidden") %}
-<p class="opacity-80">For more info send us a message at</p>
-<p class="text-xl break-all">{{ contactSection.email }}</p>
-
-{% set contactHref = "mailto:" + contactSection.email %}
-{{ button(label="Contact us", type="color", href=contactHref) }}
-{% endcall %}
+    {% call column(class="items-center text-center overflow-hidden") %}
+        <p class="opacity-80">For more info send us a message at</p>
+        {% call copyToClipboard({
+            input: contactSection.email,
+            toastMessage: "Email copied to clipboard!"
+        }) %}
+            <button @click="copy" class="text-xl break-all hover:underline">{{ contactSection.email }}</button>
+        {% endcall %}
+        {% set contactHref = "mailto:" + contactSection.email %}
+        {{ button({label:"Contact us", type:"color", href:contactHref}) }}
+    {% endcall %}
 {% endcall %}
 
 {% call pod(podColor = "", podSize = "none") %}
-{% call fullColumn() %}
-<small class="text-center text-xs opacity-70">Copyright Turbo Power Semiconductors Inc. 2025</small>
-{% endcall %}
+    {% call column() %}
+        <small class="text-center text-xs opacity-70">Copyright Turbo Power Semiconductors Inc. 2025</small>
+    {% endcall %}
 {% endcall %}

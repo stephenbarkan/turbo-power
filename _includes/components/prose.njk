@@ -1,0 +1,5 @@
+{% macro prose(class = none) %}
+    <div class="prose {{ class }}">
+        {{ caller() | safe }}
+    </div>
+{% endmacro %}

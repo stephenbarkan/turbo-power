@@ -1,26 +1,26 @@
 {% from "components/button.njk" import button %}
+{% from "components/drawer.njk" import drawer %}
 
 <header class="p-global-gap flex gap-global-gap relative">
     <div class="text-green-600 h-full">{% include "assets/logo.svg" %}</div>
     <nav class="hidden lg:flex gap-global-gap flex-1">
-        {{ button(label="About", href="#about", class="flex-grow") }}
-        {{ button(label="Founder", href="#founder", class="flex-grow") }}
-        {{ button(label="Contact", href="#contact", class="flex-grow") }}
+        {{ button({label:"About", type:"default", href:"#about"}, {class:"flex-grow"}) }}
+        {{ button({label:"Founder", type:"default", href:"#founder"}, {class:"flex-grow"}) }}
+        {{ button({label:"Contact", type:"default", href:"#contact"}, {class:"flex-grow"}) }}
     </nav>
-    <div class="flex flex-grow lg:hidden"
-        x-data="{
-            open: false,
-            onClick() {
-                this.open = !this.open;
-                this.label = this.open ? 'Close menu' : 'Menu'
+
+    <div class="lg:hidden flex flex-grow">
+        {{ drawer(
+            triggerProps={
+                labelClosed:"Menu",
+                labelOpen:"Close menu",
+                type:"default"
             },
-            label:'Menu'
-        }">
-        {{ button(class="flex-grow", attrs={"@click": "onClick()", dynamicLabel: true}) }}
-        <nav @click="open = onClick" class="flex-col gap-global-gap absolute left-0 w-full z-10 bg-gray-100 px-global-gap pb-global-gap top-full" :class="open ? 'flex' : 'hidden'">
-            {{ button(label="About", href="#about", class="flex-grow") }}
-            {{ button(label="Founder", href="#founder", class="flex-grow") }}
-            {{ button(label="Contact", href="#contact", class="flex-grow") }}
-        </nav>
+            drawerItems=[
+                { macro:button, props:{label:"About", type: "default", href:"#about"}, attrs:{class:"flex-grow"} },
+                { macro:button, props:{label:"Founder", type: "default", href:"#founder"}, attrs:{class:"flex-grow"} },
+                { macro:button, props:{label:"Contact", type: "default", href:"#contact"}, attrs:{class:"flex-grow"} }
+            ]
+        ) }}
     </div>
 </header>

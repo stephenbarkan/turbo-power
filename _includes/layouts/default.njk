@@ -26,6 +26,8 @@
         <meta name="generator" content="{{ eleventy.generator }}">
         <link rel="stylesheet" href="/index.css">
         <link rel="icon" type="image/x-icon" href="{{ global.favicon }}">
+                <script src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js" defer></script>
+
         <script src="//unpkg.com/alpinejs" defer></script>
     </head>
     <body class="text-base bg-gray-100 text-green-900 antialiased">
@@ -33,5 +35,7 @@
         <div class="flex flex-col gap-global-gap px-global-gap pb-global-gap">
             {{ content | safe }}
         </div>
+        {% from "components/toast.njk" import toaster %}
+        {{ toaster() }}
     </body>
 </html>

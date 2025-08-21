@@ -1,0 +1,58 @@
+{#
+    Dropdown
+
+    @param triggerProps = {} // props for the button component that triggers the dropdown
+    @param dropdownItems = [] // array of macros (objects) that should be rendered inside the dropdown panel
+#}
+
+{% from "components/button.njk" import button %}
+
+{% macro dropdown(attrs={}, triggerProps = {}, dropdownItems = [], data={}) %}
+    <div
+        x-data="{
+            open: false,
+            toggle() {
+                if (this.open) {
+                    return this.close()
+                }
+                this.$refs.button.focus()
+                this.open = true
+            },
+            close(focusAfter) {
+                if (! this.open) return
+                this.open = false
+                focusAfter && focusAfter.focus()
+            },
+        }"
+        x-id="['dropdown']"
+        x-on:keydown.escape.prevent.stop="close($refs.button)"
+        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+        class="{{ attrs.class }}"
+        {% for key, value in attrs %}
+            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+        {% endfor %}
+    >
+        {{ button(
+            props=triggerProps,
+            attrs={
+                "x-ref": "button",
+                "@click": "toggle()",
+                ":aria-expanded": "open",
+                ":aria-controls":"$id('dropdown')"
+            })
+        }}
+        <div
+            x-ref="panel"
+            x-show="open"
+            x-on:click.outside="close($refs.button)"
+            x-cloak
+            :id="$id('dropdown')"
+            class="absolute left-0 w-full z-10 outline-none top-full">
+            <ul class="flex flex-col gap-global-gap bg-gray-100 px-global-gap pb-global-gap">
+                {% for item in dropdownItems %}
+                    <li>{{ item.macro(item.props, item.attrs) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endmacro %}

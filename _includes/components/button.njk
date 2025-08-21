@@ -1,47 +1,44 @@
+{#
+    Button
+
+    @param label = "" // what the button says. If omitted, use call() to define button HTML contents
+    @param href = "" // if omitted, it'll be rendered as a button element
+    @param type = "" // type styles
+    @param size = "" // size styles
+    @param attrs = {} // all other HTML attributes
+#}
+
 {% set typeClasses = {
     default: "bg-gray-200 hover:bg-gray-300",
     color: "bg-yellow-600 hover:bg-yellow-700"
-    }
-%}
+} %}
+
+{% set sizeClasses = {} %}
 
 {%- macro button(
-    label=None,
-    href=None,
-    icon,
-    class,
-    animatingIcon,
-    newTab,
-    disabled=false,
-    attrs= {},
-    type="default"
-) -%}
+    props={
+        label: null,
+        href: null,
+        type: "button",
+        size: null
+    },
+    attrs={}
+    ) -%}
 
-    <{% if href %}a href="{{href}}"{% else %}button{% endif %}
-
-        {% if newTab %} target="_blank" {% endif %}
-        {% if disabled %}disabled{% endif %}
-
-        class="text-sm text-green-900 disabled:opacity-60 py-6 px-6 flex gap-2 justify-center items-center transition-all ease-fluid duration-75 rounded-base active:scale-[.985] {{ class }} {% if page.url == href + '/' %} selected {% endif %} {% if disabled %}pointer-events-none{% endif %} {{ typeClasses[type] }}"
+    <{% if props.href %}a href="{{- props.href -}}"{% else %}button{% endif %}
+        class="text-sm text-green-900 disabled:opacity-60 py-6 px-6 flex gap-2 justify-center items-center transition-all ease-fluid duration-75 rounded-base active:scale-[.985] cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %} {{ typeClasses[props.type] }} {{ sizeClasses[props.size] }}"
 
         {% for key, value in attrs %}
             {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
         {% endfor %}
     >
-        {%- if icon -%}
-            <span x-show="!isAnimating" class="icon">{%- include icon -%}</span>
-        {%- endif -%}
-        {%- if animatingIcon -%}
-            <span x-show="isAnimating" class="animating-icon">{%- include animatingIcon -%}</span>
+
+        {%- if props.label -%}
+            {{ props.label }}
+        {%- else -%}
+            {{ caller() | safe }}
         {%- endif -%}
 
-        {%- if label -%}
-            <span class="label">{{label}}</span>
-        {%- endif -%}
-
-        {%- if attrs.dynamicLabel %}
-            <span x-text="label"></span>
-        {%- endif -%}
-
-    </{% if href %}a{% else %}button{% endif %}>
+    </{% if props.href %}a{% else %}button{% endif %}>
 
 {%- endmacro -%}
