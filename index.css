@@ -83,6 +83,8 @@
   --color-yellow-100: color(display-p3 0.988235 0.976471 0.929412 / 1);
   --color-yellow-600: color(display-p3 0.94902 0.909804 0.337255 / 1);
   --color-yellow-700: color(display-p3 0.921569 0.858824 0.298039 / 1);
+
+  --color-black: color(display-p3 0.078431 0.090196 0.090196 / 1);
 }
 
 @layer components {
