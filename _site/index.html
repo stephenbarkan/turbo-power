@@ -80,6 +80,7 @@
 
         <nav
             @click="open = toggle"
+            x-cloak
             class="absolute left-0 w-full z-10 top-full"
             :class="open ? 'block' : 'hidden'">
             <ul class="flex flex-col gap-global-gap bg-gray-100 px-global-gap pb-global-gap">
@@ -125,14 +126,17 @@
 
 
     <div
-        id="hero"
         data-id="pod"
+        
+            id="hero"
+        
         style="--spacing-pod-block: var(--pod-block-lg)"
         class="flex flex-1/2 flex-col overflow-hidden relative lg:flex-row scroll-my-global-gap  gap-pod-gap rounded-lg bg-green-900 text-yellow-100 ">
         
     
     <div
         data-id="column"
+        
         class="col-span-full justify-center flex-1/2 flex flex-col gap-content-gap px-pod-inline first:pt-pod-block last:pb-pod-block lg:py-pod-block lg:max-w-none mx-auto ">
         
         <p class="text-green-400">Turbo Power Semiconductors</p>
@@ -147,14 +151,17 @@
 
 
     <div
-        id="about"
         data-id="pod"
+        
+            id="about"
+        
         style="--spacing-pod-block: var(--pod-block-base)"
         class="flex flex-1/2 flex-col overflow-hidden relative lg:flex-row scroll-my-global-gap  gap-pod-gap rounded-lg  ">
         
     
     <div
         data-id="column"
+        
         class="col-span-full justify-center flex-1/2 flex flex-col gap-content-gap px-pod-inline first:pt-pod-block last:pb-pod-block lg:py-pod-block lg:max-w-none mx-auto ">
         
         
@@ -181,14 +188,17 @@
 
     
     <div
-        id=""
         data-id="pod"
+        
+            
+        
         style="--spacing-pod-block: var(--pod-block-sm)"
         class="flex flex-1/2 flex-col overflow-hidden relative lg:flex-row scroll-my-global-gap  gap-pod-gap rounded-lg bg-green-400 items-end">
         
         
     <div
         data-id="column"
+        
         class="col-span-full justify-center flex-1/2 flex flex-col gap-content-gap px-pod-inline first:pt-pod-block last:pb-pod-block lg:py-pod-block lg:max-w-none mx-auto ">
         
             <div class="text-green-600 w-min scale-[6] top-20 absolute -rotate-90 hidden lg:block">    <svg viewBox="0 0 116 79" height="79" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -209,14 +219,17 @@
 
 
     <div
-        id="founder"
         data-id="pod"
+        
+            id="founder"
+        
         style="--spacing-pod-block: var(--pod-block-base)"
         class="flex flex-1/2 flex-col overflow-hidden relative lg:flex-row scroll-my-global-gap  gap-pod-gap rounded-lg bg-green-200 ">
         
     
     <div
         data-id="column"
+        
         class="col-span-full justify-center flex-1/2 flex flex-col gap-content-gap px-pod-inline first:pt-pod-block last:pb-pod-block lg:py-pod-block lg:max-w-none mx-auto ">
         
         <img class="rounded-base" src="/images/uploads/alex.png" alt="">
@@ -226,6 +239,7 @@
     
     <div
         data-id="column"
+        
         class="col-span-full justify-center flex-1/2 flex flex-col gap-content-gap px-pod-inline first:pt-pod-block last:pb-pod-block lg:py-pod-block lg:max-w-none mx-auto ">
         
         <h2 class="text-base opacity-70">Founder and President</h2>
@@ -241,14 +255,19 @@
 
 
     <div
-        id="contact"
         data-id="pod"
+        
+            id="contact"
+        
         style="--spacing-pod-block: var(--pod-block-base)"
         class="flex flex-1/2 flex-col overflow-hidden relative lg:flex-row scroll-my-global-gap  gap-pod-gap rounded-lg bg-green-900 text-yellow-100 ">
         
     
     <div
         data-id="column"
+        
+            
+        
         class="col-span-full justify-center flex-1/2 flex flex-col gap-content-gap px-pod-inline first:pt-pod-block last:pb-pod-block lg:py-pod-block lg:max-w-none mx-auto items-center text-center overflow-hidden">
         
         <p class="opacity-80">For more info send us a message at</p>
@@ -270,7 +289,16 @@
     
     >
         
-            <button @click="copy" class="text-xl break-all hover:underline">contact@turbopowersemi.com</button>
+                <button
+        class="text-sm text-green-900 disabled:opacity-60 py-6 px-6 flex gap-2 justify-center items-center transition-all ease-fluid duration-75 rounded-base active:scale-[.985] cursor-pointer text-xl text-inherit p-0! break-all cursor-pointer hover:underline   "
+
+        
+            @click="copy"
+        
+            
+        
+    >contact@turbopowersemi.com</button>
+            
         
         
     <template x-teleport="#toaster">
@@ -300,14 +328,15 @@
 
 
     <div
-        id=""
         data-id="pod"
+        
         style="--spacing-pod-block: var(--pod-block-none)"
         class="flex flex-1/2 flex-col overflow-hidden relative lg:flex-row scroll-my-global-gap  gap-pod-gap rounded-lg  ">
         
     
     <div
         data-id="column"
+        
         class="col-span-full justify-center flex-1/2 flex flex-col gap-content-gap px-pod-inline first:pt-pod-block last:pb-pod-block lg:py-pod-block lg:max-w-none mx-auto ">
         
         <small class="text-center text-xs opacity-70">Copyright Turbo Power Semiconductors Inc. 2025</small>

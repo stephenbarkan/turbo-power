@@ -1,17 +1,22 @@
-{% macro pod(podColor = "", podSize = "base", class = "", id = "") %}
+{% macro pod(props={podColor: "", podSize: "base"}, attrs={}) %}
     <div
-        id="{{id}}"
         data-id="pod"
-        style="--spacing-pod-block: var(--pod-block-{{podSize}})"
-        class="flex flex-1/2 flex-col overflow-hidden relative lg:flex-row scroll-my-global-gap  gap-pod-gap rounded-lg {{ podColor }} {{ class }}">
+        {% for key, value in attrs %}
+            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+        {% endfor %}
+        style="--spacing-pod-block: var(--pod-block-{{ props.podSize }})"
+        class="flex flex-1/2 flex-col overflow-hidden relative lg:flex-row scroll-my-global-gap  gap-pod-gap rounded-lg {{ props.podColor }} {{ attrs.class }}">
         {{ caller() | safe }}
     </div>
 {% endmacro %}
 
-{% macro column(class) %}
+{% macro column(attrs={}) %}
     <div
         data-id="column"
-        class="col-span-full justify-center flex-1/2 flex flex-col gap-content-gap px-pod-inline first:pt-pod-block last:pb-pod-block lg:py-pod-block lg:max-w-none mx-auto {{ class }}">
+        {% for key, value in attrs %}
+            {% if key != 'class' %}{{ key }}="{{ value }}"{% endif %}
+        {% endfor %}
+        class="col-span-full justify-center flex-1/2 flex flex-col gap-content-gap px-pod-inline first:pt-pod-block last:pb-pod-block lg:py-pod-block lg:max-w-none mx-auto {{ attrs.class }}">
         {{ caller() | safe }}
     </div>
 {% endmacro %}

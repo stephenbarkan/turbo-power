@@ -88,6 +88,10 @@
 }
 
 @layer components {
+  [x-cloak] {
+    display: none !important;
+  }
+
   .prose {
     --prose-font-size: var(--text-lg);
     --prose-primary-text-color: var(--color-green-900);

@@ -26,7 +26,7 @@ contactSection:
 {% from "components/copyToClipboard.njk" import copyToClipboard %}
 
 {# banner section #}
-{% call pod(podColor="bg-green-900 text-yellow-100", podSize="lg", id="hero") %}
+{% call pod({podColor:"bg-green-900 text-yellow-100", podSize:"lg"}, {id:"hero"}) %}
     {% call column() %}
         <p class="text-green-400">{{ global.siteTitle }}</p>
         <h1 class="text-2xl">{{ global.siteDescription }}</h1>
@@ -34,7 +34,7 @@ contactSection:
 {% endcall %}
 
 {# about section #}
-{% call pod(podColor = "", podSize = "base", id = "about") %}
+{% call pod({podColor:"", podSize:"base"}, {id:"about"}) %}
     {% call column() %}
         {% for item in aboutSection.content %}
             {% call prose() %}
@@ -42,7 +42,7 @@ contactSection:
             {% endcall %}
         {% endfor %}
     {% endcall %}
-    {% call pod(podColor="bg-green-400", podSize="sm", class="items-end") %}
+    {% call pod({podColor:"bg-green-400", podSize:"sm"}, {class:"items-end"}) %}
         {% call column() %}
             <div class="text-green-600 w-min scale-[6] top-20 absolute -rotate-90 hidden lg:block">{% include "assets/logo.svg" %}</div>
             <p class="text-xl align">{{ aboutSection.callout }}</p>
@@ -51,7 +51,7 @@ contactSection:
 {% endcall %}
 
 {# founder section #}
-{% call pod(podColor="bg-green-200", id="founder") %}
+{% call pod({podColor:"bg-green-200", podSize:"base"}, {id:"founder"}) %}
     {% call column() %}
         <img class="rounded-base" src="{{ founderSection.image }}" alt="">
     {% endcall %}
@@ -63,21 +63,22 @@ contactSection:
 {% endcall %}
 
 {# contact section #}
-{% call pod(podColor="bg-green-900 text-yellow-100", id="contact") %}
-    {% call column(class="items-center text-center overflow-hidden") %}
+{% call pod({podColor:"bg-green-900 text-yellow-100", podSize:"base"}, {id:"contact"}) %}
+    {% call column({class:"items-center text-center overflow-hidden"}) %}
         <p class="opacity-80">For more info send us a message at</p>
         {% call copyToClipboard({
             input: contactSection.email,
             toastMessage: "Email copied to clipboard!"
         }) %}
-            <button @click="copy" class="text-xl break-all hover:underline">{{ contactSection.email }}</button>
+                {{ button({label:contactSection.email}, {"@click":"copy", class:"text-xl text-inherit p-0! break-all cursor-pointer hover:underline"}) }}
+            {# <button @click="copy" class="text-xl break-all cursor-pointer hover:underline">{{ contactSection.email }}</button> #}
         {% endcall %}
         {% set contactHref = "mailto:" + contactSection.email %}
         {{ button({label:"Contact us", type:"color", href:contactHref}) }}
     {% endcall %}
 {% endcall %}
 
-{% call pod(podColor = "", podSize = "none") %}
+{% call pod({podSize:"none"}) %}
     {% call column() %}
         <small class="text-center text-xs opacity-70">Copyright Turbo Power Semiconductors Inc. 2025</small>
     {% endcall %}
